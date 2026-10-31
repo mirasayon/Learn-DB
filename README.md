@@ -1,6 +1,6 @@
 # Learn-DB
 
-A simple PostgreSQL database for SQL practice.
+An empty PostgreSQL database with Docker Compose.
 
 ## Start
 
@@ -8,9 +8,9 @@ A simple PostgreSQL database for SQL practice.
 docker compose up -d
 ```
 
-## Connect with DBeaver
+## DBeaver
 
-Create a **PostgreSQL** connection:
+Create a new **PostgreSQL** connection using:
 
 | Setting | Value |
 | --- | --- |
@@ -20,16 +20,7 @@ Create a **PostgreSQL** connection:
 | Username | `postgres` |
 | Password | `1234` |
 
-Click **Test Connection**, then **Finish**. The `products` table is created automatically on first startup. Credentials are in [`.env`](.env).
-
-## Try SQL
-
-```sql
-SELECT * FROM products;
-
-INSERT INTO products (name, price, stock)
-VALUES ('Mouse', 15.90, 10);
-```
+Click **Test Connection**, then **Finish**. Edit the settings in [`.env`](.env) if needed.
 
 ## Stop
 
@@ -37,6 +28,6 @@ VALUES ('Mouse', 15.90, 10);
 docker compose down
 ```
 
-Data is preserved. **`docker compose down -v` deletes all database data.**
+Data stays in the Docker volume. **`docker compose down -v` permanently deletes the database data.**
 
-For local learning only; do not use these credentials in production.
+Local learning use only; do not use the example password in production.
