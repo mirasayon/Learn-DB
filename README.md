@@ -7,7 +7,7 @@ A minimal PostgreSQL practice database with Docker Compose.
 Install Docker, then run:
 
 ```sh
-docker compose up -d --remove-orphans
+docker compose up -d
 ```
 
 On a new database volume, PostgreSQL automatically creates the `products` table from [sql/products.sql](sql/products.sql).
