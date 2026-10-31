@@ -1,6 +1,3 @@
--- Automatically applied to a new database.
--- Can also be run manually in DBeaver without deleting existing rows.
-
 CREATE TABLE IF NOT EXISTS products (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
