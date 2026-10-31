@@ -16,11 +16,11 @@ Create a **PostgreSQL** connection:
 | --- | --- |
 | Host | `localhost` |
 | Port | `5432` |
-| Database | `expdb` |
-| Username | `student` |
-| Password | `learn_db_demo_only` |
+| Database | `test` |
+| Username | `postgres` |
+| Password | `1234` |
 
-Click **Test Connection**, then **Finish**. The `products` table is created automatically on first startup.
+Click **Test Connection**, then **Finish**. The `products` table is created automatically on first startup. Credentials are in [`.env`](.env).
 
 ## Try SQL
 
