@@ -1,5 +1,5 @@
--- Run automatically when PostgreSQL creates a new database.
--- You can also run it manually in Adminer without deleting existing rows.
+-- Automatically applied to a new database.
+-- Can also be run manually in DBeaver without deleting existing rows.
 
 CREATE TABLE IF NOT EXISTS products (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
