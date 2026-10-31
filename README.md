@@ -1,49 +1,48 @@
 # Learn-DB
 
-[Русский](README.ru.md)
-
-A small PostgreSQL playground with Docker and Adminer.
+A minimal PostgreSQL practice database with Docker Compose.
 
 ## Start
+
+Install Docker, then run:
 
 ```sh
 docker compose up -d
 ```
 
-Open http://localhost:8080 and log in:
+On a new database volume, PostgreSQL automatically creates the `products` table from [sql/products.sql](sql/products.sql).
 
-| Field | Value |
+## Connect with DBeaver
+
+Open **DBeaver** → **New Database Connection** → **PostgreSQL** and enter:
+
+| Setting | Value |
 | --- | --- |
-| System | PostgreSQL |
-| Server | `postgres` |
+| Host | `localhost` |
+| Port | `5432` |
+| Database | `expdb` |
 | Username | `student` |
 | Password | `learn_db_demo_only` |
-| Database | `expdb` |
 
-The `products` table is created automatically **on the first start**.
+Click **Test Connection** (install the PostgreSQL driver if prompted), then **Finish**.
 
-## Try SQL
-
-In Adminer, open **SQL command** and run these statements one at a time:
+Open an **SQL Editor** for `expdb` and try:
 
 ```sql
-INSERT INTO products (name, price, stock, category)
-VALUES ('Mouse', 15.90, 10, 'Electronics');
-
 SELECT * FROM products;
 
-UPDATE products SET price = 12.50 WHERE name = 'Mouse';
+INSERT INTO products (name, price, stock)
+VALUES ('Mouse', 15.90, 10);
 
-DELETE FROM products WHERE name = 'Mouse';
+SELECT * FROM products;
 ```
 
-The table definition is in [sql/products.sql](sql/products.sql).
+## Stop
 
-## Stop or reset
+```sh
+docker compose down
+```
 
-- `docker compose down` — stop and remove containers; keep database data.
-- `docker compose down -v` — **permanently delete all local database data**.
+This keeps database data. **`docker compose down -v` deletes all local database data.**
 
-If you already started this project before, the initialization script will **not** run again on an existing database volume. To create the table without deleting your data, run [sql/products.sql](sql/products.sql) manually in Adminer.
-
-The demo login and PostgreSQL host port are in [`.env`](.env). Changing database credentials there does not change an already initialized database. PostgreSQL and Adminer are accessible only from this computer. **Do not use the demo password for real services.**
+If you have an existing database volume, the initialization script does not run again; execute [sql/products.sql](sql/products.sql) once in DBeaver if `products` is missing. Connection settings can be changed in [`.env`](.env), but changing credentials there does not update an existing database. The credentials are for local learning only.
