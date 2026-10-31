@@ -29,5 +29,3 @@ docker compose down
 ```
 
 Data stays in the Docker volume. **`docker compose down -v` permanently deletes the database data.**
-
-Local learning use only; do not use the example password in production.
