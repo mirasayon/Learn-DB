@@ -9,11 +9,7 @@ services:
       - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
-      interval: 5s
-      timeout: 5s
-      retries: 10
+      - ./sql/products.sql:/docker-entrypoint-initdb.d/01-products.sql:ro
 
   adminer:
     image: adminer:5
@@ -22,8 +18,7 @@ services:
     environment:
       ADMINER_DEFAULT_SERVER: postgres
     depends_on:
-      postgres:
-        condition: service_healthy
+      - postgres
 
 volumes:
   pgdata:
